@@ -29,6 +29,7 @@ int main() {
     int size = sizeof(addr);
 
     addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    // "127.0.0.1"      мой локал айпи          10.82.246.23  айпи максимки
     addr.sin_family = AF_INET;
     addr.sin_port = htons(1234);
     SOCKET sock;
@@ -56,9 +57,9 @@ int main() {
 
 
     char message[256];
-    recv(sock,message,sizeof(message),0);
-    cout << message << endl;
+    cout << "Введите х:" << endl;
     double x = mylib::checkTryToInputDouble();
+    cout << "Введите у:" << endl;
     double y = mylib::checkTryToInputDouble();
     string strX = to_string(x);
     string strY = to_string(y);
