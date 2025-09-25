@@ -22,6 +22,7 @@ int main() {
 
     if (WSAStartup(wVersion, &wSAData)!=0) {
         cout << "WSAStartup failed with error: " << WSAGetLastError() << endl;
+        WSACleanup();
         return 1;
     }
 
@@ -45,6 +46,7 @@ int main() {
             cout << "Ждём 5 секунд и проббуем ещё раз" << endl;
             this_thread::sleep_for(chrono::seconds(5));
             if (counter==50) {
+                WSACleanup();
                 return 0;
             }
         }
@@ -70,6 +72,7 @@ int main() {
     recv(sock,message,sizeof(message),0);
     cout << message << endl;
 
-
+    closesocket(sock);
+    WSACleanup();
 
 }
